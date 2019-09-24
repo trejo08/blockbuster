@@ -29,7 +29,7 @@ module Blockbuster
       end
       post :movies do
         if !params[:name].empty?
-          res = Movie.create(name: params[:name], description: params[:description], image_url: params[:image])
+          res = Movie.create(name: params[:name], description: params[:description])
         end
         res.to_json
       end

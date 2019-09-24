@@ -1,7 +1,7 @@
 require 'sequel'
 require 'sequel/extensions/seed'
 
-if ENV['RACK_ENV'] == 'development'
+if ENV['RACK_ENV'] == 'development' || ENV['RACK_ENV'] == 'test'
   require 'dotenv'
   Dotenv.load('.env')
 end
@@ -16,7 +16,8 @@ Bundler.require :default, ENV['RACK_ENV']
 
 # Add extension and initialize database before models in order to works as well
 Sequel.extension :seed
-DB = Sequel.connect(ENV['DATABASE_URL'], logger: Logger.new(STDOUT))
+# DB = Sequel.connect(ENV['DATABASE_URL'], logger: Logger.new(STDOUT))
+DB = Sequel.connect(ENV['DATABASE_URL'])
 
 Dir[File.expand_path('../../api/*.rb', __FILE__), File.expand_path('../../app/*/*.rb', __FILE__)].each do |f|
   require f

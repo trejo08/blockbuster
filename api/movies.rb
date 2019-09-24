@@ -11,9 +11,7 @@ module Blockbuster
       end
       get :movies do
         list = ListMovies.new
-        result = list.call
-        puts "Dry Transaction result: #{result}"
-        return result
+        list.call.success
       end
   
       desc 'create a movie' do

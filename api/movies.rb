@@ -6,6 +6,9 @@ module Blockbuster
       desc 'Get all movie titles!' do
         detail 'this will expose all the movies'
       end
+      params do
+        optional :week_day, type: String, documentation: { param_type: 'query' }
+      end
       get :movies do
         res = DB[:movies]
         puts "res: #{res}"
@@ -25,7 +28,10 @@ module Blockbuster
         optional :image, type: Rack::Multipart::UploadedFile, documentation: { param_type: 'query' }
       end
       post :movies do
-        puts "params received"
+        if !params[:name].empty?
+          res = Movie.create(name: params[:name], description: params[:description], image_url: params[:image])
+        end
+        res.to_json
       end
     end
   end

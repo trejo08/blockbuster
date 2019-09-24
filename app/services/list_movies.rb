@@ -12,7 +12,6 @@ class ListMovies
     res = day.nil? ? DB[:movies] : MovieDay.association_join(:movie).where(day: DAYS[day.to_sym]).map{
       |item| item.movie.values
     }
-    puts "response: #{res.inspect}"
-    return Success(res.to_a)
+    Success(res.to_a)
   end
 end

@@ -3,6 +3,7 @@ module Blockbuster
     prefix 'api'
     format :json
     mount ::Blockbuster::Movies
+    mount ::Blockbuster::Reservations
     add_swagger_documentation api_version: 'v1'
   end
 end

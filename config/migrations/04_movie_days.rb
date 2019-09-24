@@ -8,6 +8,6 @@ Sequel.migration do
   end
 
   down do
-    drop_table(:artists)
+    drop_table(:movie_days)
   end
 end

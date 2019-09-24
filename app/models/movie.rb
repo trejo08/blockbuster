@@ -4,7 +4,7 @@ class Movie < Sequel::Model
   def validate
     super
     errors.add(:name, "must be present") if name.empty?
-    errors.add(:image_url, "must be image") if image.present? && validate_image
+    errors.add(:image_url, "must be image") if image_url.present? && validate_image
   end
 
   def validate_image

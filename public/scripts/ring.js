@@ -3,7 +3,7 @@ $(document).ready(function() {
   var ring = function() {
     $.ajax({
       type: "POST",
-      url: "/api/ring",
+      url: "/api/movies",
       success: function(data) {
         $('#ring_value').text("rang " + data.rang.toString() + " time(s)");
         $('#ring_action').text("click here to ring again");

@@ -1,5 +1,7 @@
 class Movie < Sequel::Model
-  require 'mime/types'
+  one_to_many :movie_days
+  plugin :nested_attributes
+  nested_attributes :movie_days
 
   def validate
     super

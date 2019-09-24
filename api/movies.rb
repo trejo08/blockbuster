@@ -20,13 +20,17 @@ module Blockbuster
       params do
         requires :name, type: String, documentation: { param_type: 'query' }
         optional :description, type: String, documentation: { param_type: 'query' }
-        optional :image, type: Rack::Multipart::UploadedFile, documentation: { param_type: 'query' }
+        optional :image_url, type: String, documentation: { param_type: 'query' }
       end
       post :movies do
-        if !params[:name].empty?
-          res = Movie.create(name: params[:name], description: params[:description], image_url: params[:image])
-        end
-        res.to_json
+        data = {
+          name: params[:name],
+          description: params[:description],
+          image_url: params[:image_url]
+        }
+        create_movie = CreateMovie.new
+        res = create_movie.call(data)
+        res.success.values
       end
     end
   end

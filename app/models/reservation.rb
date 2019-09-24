@@ -1,6 +1,7 @@
 class Reservation < Sequel::Model
-  require 'mime/types'
   many_to_one :customer
+  many_to_one :movie_day
+  many_to_one :seat
 
   def validate
     super

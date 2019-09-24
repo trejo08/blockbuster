@@ -3,16 +3,11 @@ require "dry/transaction"
 class ListMovies
   include Dry::Transaction
 
-  step :validate
-  step :create
+  step :list
 
   private
-
-  def validate(input)
-    # returns Success(valid_data) or Failure(validation)
-  end
-
-  def create(input)
-    # returns Success(user)
+  def list
+    res = DB[:movies]
+    res.to_a
   end
 end

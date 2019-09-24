@@ -10,13 +10,8 @@ module Blockbuster
         optional :week_day, type: String, documentation: { param_type: 'query' }
       end
       get :movies do
-        res = DB[:movies]
-        puts "res: #{res}"
-        Movie.each do |m|
-          puts "First Movie=====================>: #{Movie[1].name}"
-        end
-
-        res.to_a
+        list = ListMovies.new
+        list.call
       end
   
       desc 'create a movie' do

@@ -8,6 +8,6 @@ class ListMovies
   private
   def list
     res = DB[:movies]
-    return res.to_a
+    return Sucess(res) || Failure(res)
   end
 end

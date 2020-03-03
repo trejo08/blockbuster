@@ -12,7 +12,7 @@ gem 'sequel_enum'
 gem 'sequel-seed'
 gem 'dry-transaction'
 gem 'pg'
-gem 'puma', '4.2.0'
+gem 'puma', '4.3.3'
 gem 'mime-types', require: 'mime/types/full'
 
 group :development do
